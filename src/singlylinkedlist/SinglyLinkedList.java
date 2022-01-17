@@ -34,6 +34,7 @@ public class SinglyLinkedList {
         linkedList.add(23);
         System.out.println("size: " + linkedList.size());
         System.out.println(linkedList);
+        System.out.println(linkedList.search(23));
     }
 
     /**
@@ -66,6 +67,26 @@ public class SinglyLinkedList {
         Node newNode = new Node(data);
         newNode.setNext_node(this.head);
         this.head = newNode;
+    }
+
+    /**
+     * Search for the first node containing data that matches the key
+     * Returns the node or `None` if not found
+     * Takes O(n) time
+     * @param key
+     * @return current
+     */
+    public Node search(Integer key) {
+        Node current = this.head;
+
+        while (current != null) {
+            if (current.getData() == key) {
+                return current;
+            } else {
+                current = current.getNext_node();
+            }
+        }
+        return null;
     }
 
     @Override
