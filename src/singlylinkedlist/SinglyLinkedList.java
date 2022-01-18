@@ -37,6 +37,53 @@ public class SinglyLinkedList {
         System.out.println(linkedList.search(23));
     }
 
+    public Node remove(int key) {
+        Node current = this.head;
+        Node previous = null;
+        boolean found = false;
+
+        while (current != null && !found) {
+            if (current.getData() == key && current == this.head) {
+                found = true;
+                this.head = current.getNext_node();
+                this.count --;
+                return current;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Inserts a new Node containing data at index position
+     * Insertion takes O(1) time but finding node at insertion point takes
+     * O(n) time.
+     * Takes overall O(n) time.
+     * @param data
+     * @param index
+     */
+    public void insert(Integer data, int index) {
+        if (index == 0) {
+            add(data);
+        }
+
+        if (index > 0) {
+            Node newNode = new Node(data);
+            int position = index;
+            Node current = this.head;
+
+            while (position > 1) {
+                current = current.getNext_node();
+                position --;
+            }
+
+            Node prev = current;
+            Node next = current.getNext_node();
+
+            prev.setNext_node(newNode);
+            newNode.setNext_node(next);
+        }
+    }
+
     /**
      * Determines if the linked list is empty
      * Takes O(1) time
