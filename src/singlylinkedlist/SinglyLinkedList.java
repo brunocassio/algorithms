@@ -32,14 +32,27 @@ public class SinglyLinkedList {
         linkedList.add(1);
         linkedList.add(2);
         linkedList.add(23);
+        linkedList.insert(24, 2);
         System.out.println("size: " + linkedList.size());
         System.out.println(linkedList);
         System.out.println(linkedList.search(23));
+        System.out.println("List is empty: " + linkedList.isEmpty());
+        System.out.println("Removing one node...");
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
     }
 
+    /**
+     * Removes Node containing data that matches the key
+     * Returns the node or `None` if key doesn't exist
+     * Takes O(n) time
+     * @param key
+     * @return
+     */
     public Node remove(int key) {
         Node current = this.head;
-        Node previous = null;
+        Node previous = new Node();
         boolean found = false;
 
         while (current != null && !found) {
@@ -48,6 +61,14 @@ public class SinglyLinkedList {
                 this.head = current.getNext_node();
                 this.count --;
                 return current;
+            } else if (current.getData() == key) {
+                found = true;
+                previous.setNext_node(current.getNext_node());
+                this.count --;
+                return current;
+            } else {
+                previous = current;
+                current = current.getNext_node();
             }
         }
         return null;

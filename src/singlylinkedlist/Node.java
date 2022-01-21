@@ -17,6 +17,10 @@ public class Node {
         this.next_node = next_node;
     }
 
+    public Node() {
+
+    }
+
     public Node(Integer data) {
         this.data = data;
     }
