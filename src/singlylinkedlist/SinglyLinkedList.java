@@ -157,6 +157,21 @@ public class SinglyLinkedList {
         return null;
     }
 
+    public Node nodeAtIndex(int index) {
+        if (index == 0) {
+            return this.head;
+        } else {
+            Node current = this.head;
+            int position = 0;
+
+            while (position < index) {
+                current = current.getNext_node();
+                position++;
+            }
+            return current;
+        }
+    }
+
     @Override
     public String toString() {
         List<String> nodes = new ArrayList<>();
